@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes</title>
+    <script defer src="../shared/datos.js"></script>
+    <script defer src="../shared/gestion.js"></script>
+    <script defer src="reportes.js"></script>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <h1>Reportes</h1>
+
+    <div class="tabs">
+        <button class="tab activo" data-tab="ganancias">Ganancias</button>
+        <button class="tab" data-tab="ctasCobrar">Ctas por Cobrar</button>
+        <button class="tab" data-tab="topCafes">Top Cafes</button>
+        <button class="tab" data-tab="ultimosMov">Ultimos Movimientos</button>
+    </div>
+
+    <div id="ganancias" class="tab-contenido wide activo">
+        <h2>Ganancias</h2>
+        <div class="filtros-reporte">
+            <label>Periodo:
+                <select id="filtroPeriodo">
+                    <option value="hoy">Hoy</option>
+                    <option value="semana" selected>Esta semana</option>
+                    <option value="mes">Este mes</option>
+                    <option value="todas">Todas</option>
+                </select>
+            </label>
+            <label>Negocio:
+                <select id="filtroNegocioGanancias">
+                    <option value="todas">Todos</option>
+                </select>
+            </label>
+        </div>
+        <div id="resumenGanancias"></div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Negocio</th>
+                    <th>Compras ($)</th>
+                    <th>Ventas ($)</th>
+                    <th>Ganancia ($)</th>
+                </tr>
+            </thead>
+            <tbody id="tablaGanancias"></tbody>
+        </table>
+    </div>
+
+    <div id="ctasCobrar" class="tab-contenido wide">
+        <h2>Cuentas por Cobrar</h2>
+        <div id="resumenCtasCobrar"></div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Cliente</th>
+                    <th>Fecha</th>
+                    <th>Items</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody id="tablaCtasCobrar"></tbody>
+        </table>
+    </div>
+
+    <div id="topCafes" class="tab-contenido wide">
+        <h2>Top Cafes</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Cafe</th>
+                    <th>Kg comprados</th>
+                    <th>Kg vendidos</th>
+                    <th>Total kg</th>
+                </tr>
+            </thead>
+            <tbody id="tablaTopCafes"></tbody>
+        </table>
+    </div>
+
+    <div id="ultimosMov" class="tab-contenido wide">
+        <h2>Ultimos Movimientos</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tipo</th>
+                    <th>Negocio</th>
+                    <th>Fecha</th>
+                    <th>Total</th>
+                    <th>Pagado</th>
+                </tr>
+            </thead>
+            <tbody id="tablaUltimosMov"></tbody>
+        </table>
+    </div>
+
+    <a href="../home.html" class="btn-volver">Volver al inicio</a>
+</body>
+</html>

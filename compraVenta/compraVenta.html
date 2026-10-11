@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compra / Venta</title>
+    <script defer src="../shared/datos.js"></script>
+    <script defer src="../shared/gestion.js"></script>
+    <script defer src="compraVenta.js"></script>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <h1>Compra / Venta</h1>
+
+    <div class="tabs">
+        <button class="tab activo" data-tab="compra">Compra</button>
+        <button class="tab" data-tab="venta">Venta</button>
+        <button class="tab" data-tab="historial">Historial</button>
+    </div>
+
+    <div id="compra" class="tab-contenido wide activo">
+        <h2>Registrar Compra</h2>
+        <form id="formCompra">
+            <select name="idEntidad" required>
+                <option value="">Seleccione un proveedor</option>
+            </select>
+            <input type="date" name="fecha" required>
+
+            <div class="items-header">
+                <span>Producto</span>
+                <span>Cantidad (kg)</span>
+                <span>Precio/kg ($)</span>
+                <span>Subtotal</span>
+                <span></span>
+            </div>
+            <div id="itemsCompra"></div>
+            <button type="button" class="btn-agregar-item" onclick="agregarItem('itemsCompra')">+ Agregar café</button>
+
+            <div class="total-row">
+                <strong>Total: $<span id="totalCompra">0.00</span></strong>
+            </div>
+
+            <label>
+                <input type="checkbox" name="pagada" checked>
+                Pagado de contado
+            </label>
+
+            <button type="submit">Registrar Compra</button>
+        </form>
+    </div>
+
+    <div id="venta" class="tab-contenido wide">
+        <h2>Registrar Venta</h2>
+        <form id="formVenta">
+            <select name="idEntidad" required>
+                <option value="">Seleccione un cliente</option>
+            </select>
+            <input type="date" name="fecha" required>
+
+            <div class="items-header">
+                <span>Producto</span>
+                <span>Cantidad (kg)</span>
+                <span>Precio/kg (Bs)</span>
+                <span>Subtotal</span>
+                <span></span>
+            </div>
+            <div id="itemsVenta"></div>
+            <button type="button" class="btn-agregar-item" onclick="agregarItem('itemsVenta')">+ Agregar café</button>
+
+            <input type="number" name="tasaBs" placeholder="Tasa del dia (Bs/USD)" step="0.01" min="0" required>
+
+            <div class="total-row">
+                <strong>Total: Bs <span id="totalVenta">0.00</span></strong>
+            </div>
+
+            <label>
+                <input type="checkbox" name="pagada" checked>
+                Pagado de contado
+            </label>
+
+            <button type="submit">Registrar Venta</button>
+        </form>
+    </div>
+
+    <div id="historial" class="tab-contenido wide">
+        <h2>Historial de Transacciones</h2>
+        <div class="filtros">
+            <label>Filtrar:
+                <select id="filtroTipo">
+                    <option value="todas">Todas</option>
+                    <option value="compra">Compras</option>
+                    <option value="venta">Ventas</option>
+                </select>
+            </label>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tipo</th>
+                    <th>Negocio</th>
+                    <th>Fecha</th>
+                    <th>Items</th>
+                    <th>Total</th>
+                    <th>Pagado</th>
+                    <th>Tasa</th>
+                </tr>
+            </thead>
+            <tbody id="tablaHistorial"></tbody>
+        </table>
+    </div>
+
+    <a href="../home.html" class="btn-volver">Volver al inicio</a>
+</body>
+</html>

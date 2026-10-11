@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proveedores</title>
+    <script defer src="../shared/datos.js"></script>
+    <script defer src="../shared/gestion.js"></script>
+    <script defer src="provedores.js"></script>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <h1>Proveedores</h1>
+    <table id="tablaProvedores" class="tablaProvedores">
+        <thead>
+            <tr>
+                <th rowspan="2">ID</th>
+                <th rowspan="2">RIF</th>
+                <th rowspan="2">Proveedor</th>
+                <th colspan="4">Contacto</th>
+                <th rowspan="2">Acción</th>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <th>Cédula</th>
+                <th>Teléfono</th>
+                <th>Correo</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+
+    <div class="tabs">
+        <button class="tab activo" data-tab="agregar">Agregar Proveedor</button>
+        <button class="tab" data-tab="modificar">Modificar datos del contacto</button>
+    </div>
+
+    <div id="agregar" class="tab-contenido activo">
+        <h2>Agregar Proveedor</h2>
+        <form id="formAgregar">
+            <input type="text" name="rif" placeholder="RIF (Ej: J-12345678-0)" required>
+            <input type="text" name="nombreProvedor" placeholder="Nombre del proveedor" required>
+            <input type="text" name="nombreContacto" placeholder="Nombre del contacto" required>
+            <input type="number" name="cedulaContacto" placeholder="Cédula del contacto" required>
+            <input type="number" name="telefonoContacto" placeholder="Teléfono del contacto" required>
+            <input type="email" name="correo" placeholder="Correo del contacto" required>
+            <button type="submit">Guardar</button>
+        </form>
+    </div>
+
+    <div id="modificar" class="tab-contenido">
+        <h2>Modificar datos del contacto</h2>
+        <form id="formModificar">
+            <select name="idEntidad" required>
+                <option value="">Seleccione un proveedor</option>
+            </select>
+            <input type="text" name="nombreContacto" placeholder="Nombre del contacto" required>
+            <input type="number" name="cedulaContacto" placeholder="Cédula del contacto" required>
+            <input type="number" name="telefonoContacto" placeholder="Teléfono del contacto" required>
+            <input type="email" name="correo" placeholder="Correo del contacto" required>
+            <button type="submit">Actualizar</button>
+        </form>
+    </div>
+
+    <a href="../home.html" class="btn-volver">Volver al inicio</a>
+</body>
+</html>
