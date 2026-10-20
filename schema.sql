@@ -1,0 +1,66 @@
+CREATE TABLE IF NOT EXISTS clientes(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    rif VARCHAR(12) UNIQUE NOT NULL,
+    nombre_con VARCHAR(100) NOT NULL,
+    cedula_con VARCHAR(10) UNIQUE NOT NULL,
+    telefono_con VARCHAR(11) NOT NULL,
+    email_con VARCHAR(100) NOT NULL,
+    activo BOOLEAN DEFAULT TRUE NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS proveedores(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    rif VARCHAR(12) UNIQUE NOT NULL,
+    nombre_con VARCHAR(100) NOT NULL,
+    cedula_con VARCHAR(10) UNIQUE NOT NULL,
+    telefono_con VARCHAR(11) NOT NULL,
+    email_con VARCHAR(100) NOT NULL,
+    activo BOOLEAN DEFAULT TRUE NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS compras(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_prov INT NOT NULL,
+    fecha DATE NOT NULL,
+    pagado BOOLEAN DEFAULT TRUE NOT NULL,
+    FOREIGN KEY (id_prov) REFERENCES proveedores(id)
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE 
+);
+
+CREATE TABLE IF NOT EXISTS ventas(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_cli INT NOT NULL,
+    fecha DATE NOT NULL,
+    tasa_bcv DECIMAL(10, 2) NOT NULL,
+    pagado BOOLEAN DEFAULT TRUE NOT NULL,
+    FOREIGN KEY (id_cli) REFERENCES clientes(id)
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE 
+);
+
+CREATE TABLE IF NOT EXISTS detalles_ventas(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_venta INT NOT NULL,
+    producto ENUM('SUAVE', 'NORMAL', 'FUERTE') NOT NULL,
+    cantidad_kg DECIMAL(10, 2) NOT NULL,
+    precio_bs DECIMAL(10, 2) NOT NULL,
+    subtotal DECIMAL(10, 2) AS (cantidad_kg * precio_bs) STORED,
+    FOREIGN KEY (id_venta) REFERENCES ventas(id)
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT 
+);
+
+CREATE TABLE IF NOT EXISTS detalles_compras(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_compra INT NOT NULL,
+    producto ENUM('SUAVE', 'NORMAL', 'FUERTE') NOT NULL,
+    cantidad_kg DECIMAL(10, 2) NOT NULL,
+    precio DECIMAL(10, 2) NOT NULL,
+    subtotal DECIMAL(10, 2) AS (cantidad_kg * precio) STORED,
+    FOREIGN KEY (id_compra) REFERENCES compras(id)
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT 
+);

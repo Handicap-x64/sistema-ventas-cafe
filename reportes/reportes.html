@@ -4,53 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reportes</title>
-    <script defer src="../shared/datos.js"></script>
     <script defer src="../shared/gestion.js"></script>
-    <script defer src="reportes.js"></script>
+    <script defer src="reportes.js?v=20261020-1"></script>
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <h1>Reportes</h1>
+    <p id="mensajeReportes" role="status" aria-live="polite"></p>
 
     <div class="tabs">
-        <button class="tab activo" data-tab="ganancias">Ganancias</button>
-        <button class="tab" data-tab="ctasCobrar">Ctas por Cobrar</button>
+        <button class="tab activo" data-tab="ctasCobrar">Ctas por Cobrar</button>
         <button class="tab" data-tab="topCafes">Top Cafes</button>
         <button class="tab" data-tab="ultimosMov">Ultimos Movimientos</button>
     </div>
 
-    <div id="ganancias" class="tab-contenido wide activo">
-        <h2>Ganancias</h2>
-        <div class="filtros-reporte">
-            <label>Periodo:
-                <select id="filtroPeriodo">
-                    <option value="hoy">Hoy</option>
-                    <option value="semana" selected>Esta semana</option>
-                    <option value="mes">Este mes</option>
-                    <option value="todas">Todas</option>
-                </select>
-            </label>
-            <label>Negocio:
-                <select id="filtroNegocioGanancias">
-                    <option value="todas">Todos</option>
-                </select>
-            </label>
-        </div>
-        <div id="resumenGanancias"></div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Negocio</th>
-                    <th>Compras ($)</th>
-                    <th>Ventas ($)</th>
-                    <th>Ganancia ($)</th>
-                </tr>
-            </thead>
-            <tbody id="tablaGanancias"></tbody>
-        </table>
-    </div>
-
-    <div id="ctasCobrar" class="tab-contenido wide">
+    <div id="ctasCobrar" class="tab-contenido wide activo">
         <h2>Cuentas por Cobrar</h2>
         <div id="resumenCtasCobrar"></div>
         <table>

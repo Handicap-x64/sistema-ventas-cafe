@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clientes</title>
-    <script defer src="../shared/datos.js"></script>
-    <script defer src="../shared/gestion.js"></script>
     <script defer src="clientes.js"></script>
     <link rel="stylesheet" href="../style.css">
 </head>
@@ -31,6 +29,7 @@
             
         </tbody>
     </table>
+    <p id="mensajeClientes" role="status" aria-live="polite"></p>
 
     <div class="tabs">
         <button class="tab activo" data-tab="agregar">Agregar Cliente</button>
@@ -40,12 +39,18 @@
     <div id="agregar" class="tab-contenido activo">
         <h2>Agregar Cliente</h2>
         <form id="formAgregar">
-            <input type="text" name="rif" placeholder="RIF (Ej: J-12345678-0)" required>
-            <input type="text" name="nombreCliente" placeholder="Nombre del cliente" required>
-            <input type="text" name="nombreContacto" placeholder="Nombre del contacto" required>
-            <input type="number" name="cedulaContacto" placeholder="Cédula del contacto" required>
-            <input type="number" name="telefonoContacto" placeholder="Teléfono del contacto" required>
-            <input type="email" name="correo" placeholder="Correo del contacto" required>
+            <label for="rif">RIF</label>
+            <input id="rif" type="text" name="rif" placeholder="J-12345678" required>
+            <label for="nombre">Nombre del cliente</label>
+            <input id="nombre" type="text" name="nombre" placeholder="Nombre del cliente" required>
+            <label for="nombre_con">Nombre del contacto</label>
+            <input id="nombre_con" type="text" name="nombre_con" placeholder="Nombre del contacto" required>
+            <label for="cedula_con">Cédula del contacto</label>
+            <input id="cedula_con" type="text" name="cedula_con" placeholder="V-12345678" required>
+            <label for="telefono_con">Teléfono del contacto</label>
+            <input id="telefono_con" type="tel" name="telefono_con" placeholder="Teléfono del contacto" required>
+            <label for="email_con">Correo del contacto</label>
+            <input id="email_con" type="email" name="email_con" placeholder="Correo del contacto" required>
             <button type="submit">Guardar</button>
         </form>
     </div>
@@ -53,13 +58,18 @@
     <div id="modificar" class="tab-contenido">
         <h2>Modificar datos del contacto</h2>
         <form id="formModificar">
-            <select name="idEntidad" required>
+            <label for="idEntidad">Cliente</label>
+            <select id="idEntidad" name="idEntidad" required>
                 <option value="">Seleccione un cliente</option>
             </select>
-            <input type="text" name="nombreContacto" placeholder="Nombre del contacto" required>
-            <input type="number" name="cedulaContacto" placeholder="Cédula del contacto" required>
-            <input type="number" name="telefonoContacto" placeholder="Teléfono del contacto" required>
-            <input type="email" name="correo" placeholder="Correo del contacto" required>
+            <label for="modificar_nombre_con">Nombre del contacto</label>
+            <input id="modificar_nombre_con" type="text" name="nombre_con" placeholder="Nombre del contacto" required>
+            <label for="modificar_cedula_con">Cédula del contacto</label>
+            <input id="modificar_cedula_con" type="text" name="cedula_con" placeholder="V-12345678" required>
+            <label for="modificar_telefono_con">Teléfono del contacto</label>
+            <input id="modificar_telefono_con" type="tel" name="telefono_con" placeholder="Teléfono del contacto" required>
+            <label for="modificar_email_con">Correo del contacto</label>
+            <input id="modificar_email_con" type="email" name="email_con" placeholder="Correo del contacto" required>
             <button type="submit">Actualizar</button>
         </form>
     </div>
